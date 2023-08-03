@@ -1,0 +1,21 @@
+# apiVersion: kpt.dev/v1
+# kind: Kptfile
+# metadata:
+#   name: root-sync
+# upstream:
+#   type: git
+#   git:
+#     repo: https://github.com/mikebz/kpt-samples
+#     directory: /root-sync
+#     ref: main
+#   updateStrategy: resource-merge
+# upstreamLock:
+#   type: git
+#   git:
+#     repo: https://github.com/mikebz/kpt-samples
+#     directory: /root-sync
+#     ref: main
+#     commit: c47c65bb5d04d0c161f01b2b1c1a4722567e7152
+# info:
+#   description: sample description
+# pipeline: {}

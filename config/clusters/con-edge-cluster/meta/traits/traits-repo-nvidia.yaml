@@ -1,0 +1,12 @@
+apiVersion: configsync.gke.io/v1beta1
+kind: RootSync
+metadata:
+  name: nvidia-trait-sync
+  namespace: config-management-system
+spec:
+  sourceFormat: unstructured
+  git:
+    auth: "none"
+    branch: "main"
+    dir: "nvidia"
+    repo: https://github.com/manderson-it/anthos-cluster-traits.git

@@ -1,0 +1,16 @@
+# match auth & token name for primary-root-repo
+
+apiVersion: configsync.gke.io/v1beta1
+kind: RootSync
+metadata:
+  name: primary-rs-embed
+  namespace: config-management-system
+spec:
+  sourceFormat: unstructured
+  git:
+    auth: "none"
+    branch: "main"
+    dir: "/config/shared/root-sync"
+    period: 0s
+    repo: https://github.com/manderson-it/root-repo.git
+

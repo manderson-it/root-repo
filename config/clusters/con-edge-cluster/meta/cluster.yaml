@@ -1,0 +1,9 @@
+apiVersion: clusterregistry.k8s.io/v1alpha1
+kind: Cluster
+metadata:
+  name: con-edge-cluster # Must match ACM_NAME and/or Cluster Name defined during provisioning
+  labels:
+    location-name: "con-edge-cluster"
+    country: "usa"
+    gpu: "true"
+    accepts-traits: "nvidia"

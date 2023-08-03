@@ -1,0 +1,48 @@
+kind: ClusterSelector
+apiVersion: configmanagement.gke.io/v1
+metadata:
+  name: "100-canary-cs"
+spec:
+  selector:
+    matchExpressions:
+      - key: canary
+        operator: NotIn
+        values:
+        - "20-canary"
+        - "50-canary"
+
+---
+
+kind: ClusterSelector
+apiVersion: configmanagement.gke.io/v1
+metadata:
+  name: "20-canary-cs"
+spec:
+  selector:
+    matchExpressions:
+      - key: canary
+        operator: NotIn
+        values:
+        - "50-canary"
+      - key: canary-level
+        operator: In
+        values:
+        - "20"
+
+--- 
+
+kind: ClusterSelector
+apiVersion: configmanagement.gke.io/v1
+metadata:
+  name: "50-canary-cs"
+spec:
+  selector:
+    matchExpressions:
+      - key: canary
+        operator: NotIn
+        values:
+        - "20-canary"
+      - key: canary-level
+        operator: In
+        values:
+        - "50"

@@ -1,0 +1,12 @@
+apiVersion: configsync.gke.io/v1beta1
+kind: RootSync
+metadata:
+  name: robin-trait-sync
+  namespace: config-management-system
+spec:
+  sourceFormat: hierarchy
+  git:
+    auth: "none"
+    branch: "main"
+    dir: "robin-io/config"
+    repo: https://github.com/manderson-it/anthos-cluster-traits.git

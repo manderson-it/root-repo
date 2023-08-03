@@ -1,0 +1,8 @@
+kind: ClusterSelector
+apiVersion: configmanagement.gke.io/v1
+metadata:
+  name: cascade-sel
+spec:
+  selector:
+    matchLabels:
+      location-name: "cascade"

@@ -1,0 +1,16 @@
+### This is a "cluster" that will never exist and is used to construct a cluster selector ONLY
+kind: Cluster
+apiVersion: clusterregistry.k8s.io/v1alpha1
+metadata:
+  name: do-not-schedule-12345
+  labels:
+    cluster-name: not-applicable
+---
+kind: ClusterSelector
+apiVersion: configmanagement.gke.io/v1
+metadata:
+  name: do-not-schedule
+spec:
+  selector:
+    matchLabels:
+      cluster-name: not-applicable

@@ -1,0 +1,17 @@
+# NOTE: This ServiceAccount is used by the provisioing system to verify proper installation and to generate the Token used by the console if not using OAuth or Google Identity
+apiVersion: v1
+kind: ServiceAccount
+metadata:
+  name: console-cluster-reader
+  namespace: default
+
+---
+
+apiVersion: v1
+kind: Secret
+type: kubernetes.io/service-account-token
+metadata:
+  name: "console-cluster-reader-ksa-secret"
+  namespace: default
+  annotations:
+    kubernetes.io/service-account.name: "console-cluster-reader"

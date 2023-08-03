@@ -1,0 +1,40 @@
+kind: ClusterRole
+apiVersion: rbac.authorization.k8s.io/v1
+metadata:
+  name: cloud-console-reader
+rules:
+- apiGroups: [""]
+  resources: ["nodes", "persistentvolumes", "pods", "services", "deployments"]
+  verbs: ["get", "list", "watch"]
+- apiGroups: ["storage.k8s.io"]
+  resources: ["storageclasses"]
+  verbs: ["get", "list", "watch"]
+- apiGroups: ["external-secrets.io"]
+  resources: ["externalsecret", "clustersecretstore", "secretstore"]
+  verbs: ["get", "list", "watch"]
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRoleBinding
+metadata:
+  name: console-view-rolebinding
+roleRef:
+  apiGroup: rbac.authorization.k8s.io
+  kind: ClusterRole
+  name: view
+subjects:
+- kind: ServiceAccount
+  name: console-cluster-reader # Defined in Default namespace
+  namespace: default
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRoleBinding
+metadata:
+  name: cloud-console-reader
+roleRef:
+  apiGroup: rbac.authorization.k8s.io
+  kind: ClusterRole
+  name: cloud-console-reader
+subjects:
+- kind: ServiceAccount
+  name: console-cluster-reader # Defined in Default namespace
+  namespace: default
